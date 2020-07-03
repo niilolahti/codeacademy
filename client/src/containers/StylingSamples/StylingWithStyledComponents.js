@@ -1,113 +1,74 @@
 import React from "react";
-import styled from "styled-components";
-
-const Label = styled.label`
-  width: 100%;
-`;
-const Input = styled.input`
-  width: 100%;
-  padding: 6px 12px;
-`;
-const Select = styled.select`
-  width: 100%;
-  padding: 6px 12px;
-`;
-
-const SectionContainer = styled.div`
-  display: flex;
-  margin: 0 -15px;
-`;
-
-const Section = styled.div`
-  padding: 0 15px;
-  flex: 1;
-`;
-
-const InputGroup = styled.div`
-  margin-bottom: 16px;
-`;
 
 function StylingWithStyledComponents(props) {
   return (
     <form>
-      <SectionContainer>
-        <Section>
+      <div>
+        <div>
           <h3>Billing Address</h3>
-          <InputGroup>
-            <Label for="fullname">Full Name</Label>
-            <Input type="text" name="fullname" placeholder="Maisa Mallikas" />
-          </InputGroup>
-          <InputGroup>
-            <Label for="email">Email</Label>
-            <Input
+          <div>
+            <label for="fullname">Full Name</label>
+            <input type="text" name="fullname" placeholder="Maisa Mallikas" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input
               type="text"
               name="email"
               placeholder="maisa.mallikas@example.com"
             />
-          </InputGroup>
-          <InputGroup>
-            <Label for="address">Address</Label>
-            <Input type="text" name="address" placeholder="Länsikatu 15" />
-          </InputGroup>
-          <SectionContainer>
-            <Section>
-              <InputGroup>
-                <Label for="city">City</Label>
-                <Input type="text" name="city" placeholder="Joensuu" />
-              </InputGroup>
-            </Section>
-            <Section>
-              <InputGroup>
-                <Label for="zip">Zip</Label>
-                <Input type="text" name="zip" placeholder="80110" />
-              </InputGroup>
-            </Section>
-          </SectionContainer>
-        </Section>
+          </div>
+          <div>
+            <label for="address">Address</label>
+            <input type="text" name="address" placeholder="Länsikatu 15" />
+          </div>
+          <div>
+            <label for="city">City</label>
+            <input type="text" name="city" placeholder="Joensuu" />
+          </div>
+          <div>
+            <label for="zip">Zip</label>
+            <input type="text" name="zip" placeholder="80110" />
+          </div>
+        </div>
 
-        <Section>
+        <div>
           <h3>Payment</h3>
-          <InputGroup>
-            <Label for="cardType">Select Card</Label>
-            <Select name="cardType">
+          <div>
+            <label for="cardType">Select Card</label>
+            <select name="cardType">
               <option value="visa">Visa</option>
               <option value="masterCard">Mastercard</option>
-            </Select>
-          </InputGroup>
-          <InputGroup>
-            <Label for="cardName">Name on Card</Label>
-            <Input type="text" name="cardName" placeholder="Maisa Mallikas" />
-          </InputGroup>
-          <InputGroup>
-            <Label for="cardNumber">Credit card number</Label>
-            <Input
+            </select>
+          </div>
+          <div>
+            <label for="cardName">Name on Card</label>
+            <input type="text" name="cardName" placeholder="Maisa Mallikas" />
+          </div>
+          <div>
+            <label for="cardNumber">Credit card number</label>
+            <input
               type="text"
               name="cardNumber"
               placeholder="1111-2222-3333-4444"
             />
-          </InputGroup>
-          <SectionContainer>
-            <Section>
-              <InputGroup>
-                <Label for="cardExpMonth">Exp Month</Label>
-                <Input type="number" name="cardExpMonth" placeholder="06" />
-              </InputGroup>
-            </Section>
-            <Section>
-              <InputGroup>
-                <Label for="cardExpYear">Exp Year</Label>
-                <Input type="number" name="cardExpYear" placeholder="2020" />
-              </InputGroup>
-            </Section>
-            <Section>
-              <InputGroup>
-                <Label for="cardCvv">CVV</Label>
-                <Input type="text" name="cardCvv" placeholder="123" />
-              </InputGroup>
-            </Section>
-          </SectionContainer>
-        </Section>
-      </SectionContainer>
+          </div>
+          <div>
+            <div>
+              <label for="cardExpMonth">Exp Month</label>
+              <input type="number" name="cardExpMonth" placeholder="06" />
+            </div>
+            <div>
+              <label for="cardExpYear">Exp Year</label>
+              <input type="number" name="cardExpYear" placeholder="2020" />
+            </div>
+            <div>
+              <label for="cardCvv">CVV</label>
+              <input type="text" name="cardCvv" placeholder="123" />
+            </div>
+          </div>
+        </div>
+      </div>
     </form>
   );
 }

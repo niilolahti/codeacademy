@@ -1,37 +1,25 @@
-import React, { useEffect, useState, useMemo, useCallback } from "react";
+import React, { useEffect, useMemo, useCallback } from "react";
 import DataTable from "../../components/DataTable";
 import { FaTrash } from "react-icons/fa";
 import AddUserModal from "./AddUserModal";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+
+import * as userActions from "./userAction";
 
 const Users = (props) => {
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:3001/users")
-      .then((response) => response.json())
-      .then((data) => setUsers(data));
-  }, []);
+  const { getUsers, removeUser, users } = props;
 
-  const onDelete = useCallback((userToRemove) => {
-    fetch(`http://localhost:3001/users/${userToRemove.id}`, {
-      method: "DELETE",
-    })
-      .then((response) => {
-        if (!response.ok) {
-          console.log("Failed to remove", userToRemove);
-        } else {
-          setUsers((users) =>
-            users.filter((user) => user.id !== userToRemove.id)
-          );
-        }
-      })
-      .catch((error) => console.error(error));
-  }, []);
+  useEffect(() => {
+    getUsers() 
+  }, [getUsers]);
+  const onDelete = useCallback((user) => removeUser(user._id), [removeUser]);
 
   const columns = useMemo(
     () => [
       {
         Header: "#",
-        accessor: "id",
+        accessor: "_id",
       },
       {
         Header: "Nimi",
@@ -43,7 +31,7 @@ const Users = (props) => {
       },
       {
         Header: "Toiminnot",
-        accessor: (originalRow, rowIndex) => {
+        accessor: (originalRow) => {
           return <FaTrash onClick={() => onDelete(originalRow)} />;
         },
       },
@@ -61,4 +49,10 @@ const Users = (props) => {
 };
 
 Users.displayName = "Users";
-export default Users;
+
+export default connect(
+  (store) => ({
+    users: store.userStore.users,
+  }),
+  (dispatch) => bindActionCreators(userActions, dispatch)
+)(Users);
